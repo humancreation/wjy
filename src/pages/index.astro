@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Typewriter from "../components/Typewriter.astro";
 import { SITE_TITLE, url } from "../config";
 import { getEntry } from "astro:content";
 
@@ -10,11 +11,14 @@ const { greeting, intro, intro2, fontSample, en, traditional, jp, kr, note, code
 <BaseLayout sideBarActiveItemID="home">
     <div class="pb-12 mt-5">
         <img src={url('favicon.svg')} alt="" class="w-24 h-24 mb-2" />
-        <div class="text-xl py-1">{greeting}</div>
-        <div class="text-5xl font-bold">我是 {SITE_TITLE}</div>
+        <div class="text-xl py-1">
+            <Typewriter text={greeting} speed={80} />
+        </div>
+        <div class="text-5xl font-bold">
+            <Typewriter text={"我是 " + SITE_TITLE} speed={60} />
+        </div>
         <div class="text-xl py-6">
-            {intro} <br />
-            {intro2}
+            <Typewriter text={intro + "\n" + intro2} speed={40} />
         </div>
 
         {

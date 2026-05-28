@@ -1,0 +1,48 @@
+---
+interface Props {
+  text: string;
+  speed?: number;
+  tag?: string;
+  class?: string;
+}
+
+const { text, speed = 50, tag = "span", class: className = "" } = Astro.props;
+const Tag = tag as keyof astroHTML.JSX.DynamicElements;
+---
+
+<Tag class={className} data-typewriter-text={text} data-typewriter-speed={String(speed)}>
+  <span class="typewriter-cursor">&nbsp;</span>
+</Tag>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll("[data-typewriter-text]").forEach((el) => {
+      if (el.getAttribute("data-typewriter-done")) return;
+      el.setAttribute("data-typewriter-done", "true");
+
+      const text = el.getAttribute("data-typewriter-text") || "";
+      const speed = parseInt(el.getAttribute("data-typewriter-speed") || "50", 10);
+      let index = 0;
+      el.innerHTML = "";
+
+      function type() {
+        if (index < text.length) {
+          el.innerHTML += text[index] === "\n" ? "<br>" : text[index];
+          index++;
+          setTimeout(type, speed);
+        }
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            type();
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.3 }
+      );
+      observer.observe(el);
+    });
+  });
+</script>
