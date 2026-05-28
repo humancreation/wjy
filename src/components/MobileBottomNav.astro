@@ -1,5 +1,5 @@
 ---
-import { configs } from "../config";
+import { configs, url } from "../config";
 const { sideBarActiveItemID, site = "" } = Astro.props;
 const prefix = site ? configs[site].path : "";
 const tabs = [
@@ -19,7 +19,7 @@ const activeClass = "bg-ac-primary/15 text-ac-primary-dark";
         id={"bottom-" + tab.id}
         class={"flex flex-col items-center justify-center gap-0.5 py-1 px-3 rounded-ac-md transition-colors hover:bg-ac-sand min-w-0 flex-1 " + (sideBarActiveItemID === tab.id ? activeClass : "text-ac-text")}
       >
-        <img src={"/" + tab.icon} alt="" class="w-6 h-6 rounded-ac-sm" />
+        <img src={url(tab.icon)} alt="" class="w-6 h-6 rounded-ac-sm" />
         <span class="text-xs font-medium">{tab.label}</span>
       </a>
     ))}

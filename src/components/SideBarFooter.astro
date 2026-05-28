@@ -1,5 +1,5 @@
 ---
-import { BASE_PATH } from "../config";
+import { BASE_PATH, url } from "../config";
 ---
 
 
@@ -16,7 +16,7 @@ import { BASE_PATH } from "../config";
         aria-label="Toggle theme"
         title="Toggle theme"
     >
-        <img id="theme-icon" src="/leaf_light.png" alt="" class="w-5 h-5 rounded-ac-sm" />
+        <img id="theme-icon" src={url('leaf_light.png')} alt="" class="w-5 h-5 rounded-ac-sm" />
         <span id="theme-label">深色模式</span>
     </button>
 </div>
@@ -30,7 +30,7 @@ import { BASE_PATH } from "../config";
         aria-label="回到温馨小屋"
         title="回到温馨小屋"
     >
-        <img src="/news.png" alt="" class="w-5 h-5 rounded-ac-sm" />
+        <img src={url('news.png')} alt="" class="w-5 h-5 rounded-ac-sm" />
         <span>回到温馨小屋</span>
     </a>
 </div>
