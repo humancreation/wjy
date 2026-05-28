@@ -15,13 +15,6 @@ pnpm-debug.log*
 .env
 .env.production
 
-# generated content (copied from content-sites/{site}/ on build)
-src/content/blog/
-src/content/home/
-src/content/cv/
-src/content/notes/
-src/content/projects/
-src/content/store/
 
 # macOS-specific files
 .DS_Store
