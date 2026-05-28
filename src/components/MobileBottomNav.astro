@@ -1,0 +1,38 @@
+---
+import { url } from "../config";
+const { sideBarActiveItemID } = Astro.props;
+const tabs = [
+  { id: "projects", label: "项目", icon: "brush.png", href: url("projects") },
+  { id: "cv", label: "简历", icon: "nookwallet.png", href: url("cv") },
+  { id: "personal", label: "个人", icon: "nookcritters.png", href: url("personal") },
+];
+const activeClass = "bg-ac-primary/15 text-ac-primary-dark";
+---
+
+<div class="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
+  <div class="flex justify-around items-center h-16 bg-ac-cream-dark/95 backdrop-blur border-t border-ac-border shadow-[0_-2px_8px_rgba(135,115,88,0.12)] px-2">
+    {tabs.map((tab) => (
+      <a
+        href={tab.href}
+        id={"bottom-" + tab.id}
+        class={"flex flex-col items-center justify-center gap-0.5 py-1 px-3 rounded-ac-md transition-colors hover:bg-ac-sand min-w-0 flex-1 " + (sideBarActiveItemID === tab.id ? activeClass : "text-ac-text")}
+      >
+        <img src={url(tab.icon)} alt="" class="w-6 h-6 rounded-ac-sm" />
+        <span class="text-xs font-medium">{tab.label}</span>
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  var activeItemElem = document.getElementById("bottom-" + document.querySelector('[id^="bottom-"]')?.id?.replace("bottom-", ""));
+</script>
+
+<script define:vars={{ sideBarActiveItemID }}>
+  if (sideBarActiveItemID) {
+    var el = document.getElementById("bottom-" + sideBarActiveItemID);
+    if (el) {
+      ["bg-ac-primary/15", "text-ac-primary-dark"].forEach(function(c) { el.classList.add(c); });
+    }
+  }
+</script>
