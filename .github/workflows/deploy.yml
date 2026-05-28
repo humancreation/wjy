@@ -29,8 +29,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Debug info
+        run: |
+          node --version
+          npm --version
+          ls -la node_modules/.bin/ | head -20
+        shell: bash
+
       - name: Build site
-        run: npm run build
+        run: |
+          npm run build 2>&1 || {
+            echo "BUILD FAILED"
+            exit 1
+          }
+        shell: bash
         env:
           BASE_URL: /warm/
 
