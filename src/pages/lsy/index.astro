@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Typewriter from "../../components/Typewriter.astro";
+import { configs, url } from "../../config";
+import { getEntry } from "astro:content";
+
+const cfg = configs.lsy;
+const home = await getEntry("home", "wjy-index");
+const { greeting, intro, intro2, fontSample, en, traditional, jp, kr, note, codeNote } = home.data;
+---
+
+<BaseLayout sideBarActiveItemID="home" site="lsy">
+    <div class="pb-12 mt-5">
+        <img src={url('favicon.svg')} alt="" class="w-24 h-24 mb-2" />
+        <div class="text-xl py-1">
+            <Typewriter text={greeting} speed={80} />
+        </div>
+        <div class="text-5xl font-bold">
+            <Typewriter text={"我是 " + cfg.SITE_TITLE} speed={60} />
+        </div>
+        <div class="text-xl py-6">
+            <Typewriter text={intro + "\n" + intro2} speed={40} />
+        </div>
+
+        {
+            fontSample && (
+                <div class="mt-8 space-y-3">
+                    <div class="text-2xl font-bold">字体示例</div>
+                    <div class="text-lg">
+                        <span class="font-bold">EN:</span> {en}
+                    </div>
+                    <div class="text-lg">
+                        <span class="font-bold">简体:</span> {home.body?.trim()}
+                    </div>
+                    <div class="text-lg">
+                        <span class="font-bold">繁體:</span> {traditional}
+                    </div>
+                    <div class="text-lg">
+                        <span class="font-bold">日本語:</span> {jp}
+                    </div>
+                    <div class="text-lg">
+                        <span class="font-bold">한국어:</span> {kr}
+                    </div>
+                    <div class="text-lg pt-6" set:html={note}></div>
+                    <div class="text-lg"><code set:html={codeNote}></code></div>
+                </div>
+            )
+        }
+    </div>
+</BaseLayout>
+

@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TimeLineElement from "../../components/cv/TimeLine.astro";
+import { Image } from "astro:assets";
+import { configs, url } from "src/config";
+
+const cfg = configs.wjy;
+---
+
+<BaseLayout
+    title={cfg.AUTHOR_INITIAL + " | Personal"}
+    sideBarActiveItemID="personal"
+    site="wjy"
+>
+    <div class="w-[10rem] mt-5 mb-6">
+        <Image
+            class="fill-current rounded-ac-md"
+            format="webp"
+            width={300}
+            height={300}
+            src={url('favicon.svg')}
+            alt="icon"
+        />
+    </div>
+    <div class="mb-5">
+        <div class="text-3xl w-full font-bold">关于我</div>
+    </div>
+
+    <div class="mb-10 text-justify">
+        你好！我是一名热爱技术和创造的全栈开发者。
+        我喜欢探索新事物，并将创意转化为实际的代码。
+        这个网站展示了我的项目、博客和学习笔记。
+        希望能与你分享我的技术旅程！
+    </div>
+</BaseLayout>

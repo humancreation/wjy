@@ -1,0 +1,34 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import { NotesSchema } from "../../../content/config";
+import NotesLayout from "../../../layouts/NotesLayout.astro";
+import createSlug from "../../../lib/createSlug";
+
+export async function getStaticPaths() {
+    const allNotes = await getCollection("notes");
+    const noteEntries = allNotes.filter((n) => n.data.site === "wjy");
+    return noteEntries.map((entry) => ({
+        params: { slug: createSlug(entry.data.title, entry.slug) },
+        props: { entry },
+    }));
+}
+interface Props {
+    entry: CollectionEntry<"notes">;
+}
+
+const { entry } = Astro.props;
+const note: NotesSchema = entry.data;
+const { Content } = await entry.render();
+---
+
+<NotesLayout
+    title={note.title}
+    description={note.description}
+    pubDate={note.pubDate}
+    heroImage={note.heroImage}
+    updatedDate={note.updatedDate}
+    badge={note.badge}
+    tags={note.tags}
+>
+    <Content />
+</NotesLayout>

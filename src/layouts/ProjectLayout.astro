@@ -16,18 +16,21 @@ const {
     tags = [],
     github,
     liveUrl,
+    site = "",
 } = Astro.props;
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(pubDate).format("ll");
 import { Image } from "astro:assets";
-import { AUTHOR_INITIAL, url } from "../config";
+import { configs, url } from "../config";
+
+const authorInitial = site ? (configs[site]?.AUTHOR_INITIAL || "") : "";
 ---
 
 <BaseLayout
-    title={AUTHOR_INITIAL + " | " + title}
+    title={authorInitial ? authorInitial + " | " + title : title}
     description={description}
     image={heroImage}
-    ,
+    site={site}
     ogType="article"
 >
     <main class="md:flex md:justify-center">
@@ -53,7 +56,7 @@ import { AUTHOR_INITIAL, url } from "../config";
                     tags &&
                         tags.map((tag) => (
                             <a
-                                href={url(`projects/tag/${tag}`)}
+                                href={`/${site}/projects/tag/${tag}`}
                                 class="badge badge-outline ml-2 no-underline"
                             >
                                 {tag}

@@ -1,7 +1,8 @@
 ---
-import { url } from "../config";
-const { sideBarActiveItemID } = Astro.props;
+const { sideBarActiveItemID, site = "" } = Astro.props;
+const prefix = site ? "/" + site : "";
 const activeClass = "bg-ac-primary/15 text-ac-primary-dark rounded-ac-md";
+const homeHref = site ? prefix + "/" : "/";
 ---
 
 <ul class="menu grow shrink menu-md overflow-y-auto">
@@ -9,9 +10,9 @@ const activeClass = "bg-ac-primary/15 text-ac-primary-dark rounded-ac-md";
         <a
             class="py-3 text-base rounded-ac-md transition-colors hover:bg-ac-sand"
             id="home"
-            href={url('')}
+            href={homeHref}
         >
-            <img src={url('nookmiles.png')} alt="" class="w-6 h-6 rounded-ac-sm" />
+            <img src={"/nookmiles.png"} alt="" class="w-6 h-6 rounded-ac-sm" />
             首页
         </a>
     </li>
@@ -19,9 +20,9 @@ const activeClass = "bg-ac-primary/15 text-ac-primary-dark rounded-ac-md";
         <a
             class="py-3 text-base rounded-ac-md transition-colors hover:bg-ac-sand"
             id="projects"
-            href={url('projects')}
+            href={prefix + "/projects"}
         >
-            <img src={url('brush.png')} alt="" class="w-6 h-6 rounded-ac-sm" />
+            <img src={"/brush.png"} alt="" class="w-6 h-6 rounded-ac-sm" />
             项目
         </a>
     </li>
@@ -29,9 +30,9 @@ const activeClass = "bg-ac-primary/15 text-ac-primary-dark rounded-ac-md";
         <a
             class="py-3 text-base rounded-ac-md transition-colors hover:bg-ac-sand"
             id="cv"
-            href={url('cv')}
+            href={prefix + "/cv"}
         >
-            <img src={url('nookwallet.png')} alt="" class="w-6 h-6 rounded-ac-sm" />
+            <img src={"/nookwallet.png"} alt="" class="w-6 h-6 rounded-ac-sm" />
             简历
         </a>
     </li>
@@ -39,9 +40,9 @@ const activeClass = "bg-ac-primary/15 text-ac-primary-dark rounded-ac-md";
         <a
             class="py-3 text-base rounded-ac-md transition-colors hover:bg-ac-sand"
             id="blog"
-            href={url('blog/')}
+            href={prefix + "/blog/"}
         >
-            <img src={url('photos.png')} alt="" class="w-6 h-6 rounded-ac-sm" />
+            <img src={"/photos.png"} alt="" class="w-6 h-6 rounded-ac-sm" />
             博客
         </a>
     </li>
@@ -49,9 +50,9 @@ const activeClass = "bg-ac-primary/15 text-ac-primary-dark rounded-ac-md";
         <a
             class="py-3 text-base rounded-ac-md transition-colors hover:bg-ac-sand"
             id="personal"
-            href={url('personal')}
+            href={prefix + "/personal"}
         >
-            <img src={url('nookcritters.png')} alt="" class="w-6 h-6 rounded-ac-sm" />
+            <img src={"/nookcritters.png"} alt="" class="w-6 h-6 rounded-ac-sm" />
             个人
         </a>
     </li>
@@ -59,21 +60,20 @@ const activeClass = "bg-ac-primary/15 text-ac-primary-dark rounded-ac-md";
         <a
             class="py-3 text-base rounded-ac-md transition-colors hover:bg-ac-sand"
             id="notes"
-            href={url('notes')}
+            href={prefix + "/notes"}
         >
-            <img src={url('drawing.png')} alt="" class="w-6 h-6 rounded-ac-sm" />
+            <img src={"/drawing.png"} alt="" class="w-6 h-6 rounded-ac-sm" />
             笔记
         </a>
     </li>
-    <!-- <li><a class="py-3 text-base rounded-ac-md transition-colors hover:bg-ac-sand" id="store" href="/store"><img src="/nookstore.png" alt="" class="w-6 h-6 rounded-ac-sm" />Store</a></li> -->
     <li>
         <a
             class="py-3 text-base rounded-ac-md transition-colors hover:bg-ac-sand"
-            href="mailto:your@email.com"
+            href={"mailto:your@email.com"}
             target="_blank"
             referrerpolicy="no-referrer-when-downgrade"
         >
-            <img src={url('messages.png')} alt="" class="w-6 h-6 rounded-ac-sm" />
+            <img src={"/messages.png"} alt="" class="w-6 h-6 rounded-ac-sm" />
             联系
         </a>
     </li>

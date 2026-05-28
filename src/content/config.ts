@@ -1,5 +1,8 @@
 import { z, defineCollection } from "astro:content";
+const siteField = { site: z.enum(["wjy", "lmx", "yyd", "lsy"]) };
+
 const blogSchema = z.object({
+  ...siteField,
   title: z.string(),
   description: z.string(),
   pubDate: z.coerce.date(),
@@ -15,6 +18,7 @@ const blogSchema = z.object({
 });
 
 const notesSchema = z.object({
+  ...siteField,
   title: z.string(),
   description: z.string(),
   pubDate: z.coerce.date(),
@@ -29,6 +33,7 @@ const notesSchema = z.object({
     .optional(),
 });
 const projectsSchema = z.object({
+  ...siteField,
   title: z.string(),
   description: z.string(),
   pubDate: z.coerce.date(),
@@ -46,6 +51,7 @@ const projectsSchema = z.object({
 });
 
 const homeSchema = z.object({
+  ...siteField,
   greeting: z.string(),
   intro: z.string(),
   intro2: z.string(),
@@ -59,6 +65,7 @@ const homeSchema = z.object({
 });
 
 const cvSchema = z.object({
+  ...siteField,
   section: z.string(),
   title: z.string(),
   subtitle: z.string().optional(),

@@ -1,11 +1,11 @@
 ---
-import { url } from "../config";
-const { sideBarActiveItemID } = Astro.props;
+const { sideBarActiveItemID, site = "" } = Astro.props;
+const prefix = site ? "/" + site : "";
 const tabs = [
-  { id: "home", label: "首页", icon: "nookmiles.png", href: url("") },
-  { id: "projects", label: "项目", icon: "brush.png", href: url("projects") },
-  { id: "cv", label: "简历", icon: "nookwallet.png", href: url("cv") },
-  { id: "personal", label: "个人", icon: "nookcritters.png", href: url("personal") },
+  { id: "home", label: "首页", icon: "nookmiles.png", href: prefix + "/" },
+  { id: "projects", label: "项目", icon: "brush.png", href: prefix + "/projects" },
+  { id: "cv", label: "简历", icon: "nookwallet.png", href: prefix + "/cv" },
+  { id: "personal", label: "个人", icon: "nookcritters.png", href: prefix + "/personal" },
 ];
 const activeClass = "bg-ac-primary/15 text-ac-primary-dark";
 ---
@@ -18,7 +18,7 @@ const activeClass = "bg-ac-primary/15 text-ac-primary-dark";
         id={"bottom-" + tab.id}
         class={"flex flex-col items-center justify-center gap-0.5 py-1 px-3 rounded-ac-md transition-colors hover:bg-ac-sand min-w-0 flex-1 " + (sideBarActiveItemID === tab.id ? activeClass : "text-ac-text")}
       >
-        <img src={url(tab.icon)} alt="" class="w-6 h-6 rounded-ac-sm" />
+        <img src={"/" + tab.icon} alt="" class="w-6 h-6 rounded-ac-sm" />
         <span class="text-xs font-medium">{tab.label}</span>
       </a>
     ))}

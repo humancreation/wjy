@@ -6,16 +6,24 @@ import SideBar from "../components/SideBar.astro";
 import MobileBottomNav from "../components/MobileBottomNav.astro";
 import { ViewTransitions } from "astro:transitions";
 
-import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API, url, BASE_PATH } from "../config";
+import { configs, TRANSITION_API, url, BASE_PATH } from "../config";
 
 const {
     image,
-    title = SITE_TITLE,
-    description = SITE_DESCRIPTION,
+    title: pageTitle,
+    description: pageDesc,
     includeSidebar = true,
     sideBarActiveItemID,
     ogType,
+    site = "",
 } = Astro.props;
+
+const cfg = site ? configs[site] : null;
+const SITE_TITLE = cfg?.SITE_TITLE || "温馨小屋";
+const SITE_DESCRIPTION = cfg?.SITE_DESCRIPTION || "温馨小屋";
+const title = pageTitle || SITE_TITLE;
+const description = pageDesc || SITE_DESCRIPTION;
+const isPortal = !site;
 ---
 
 <!doctype html>
@@ -41,18 +49,18 @@ const {
     <body>
         <div class="bg-ac-cream drawer lg:drawer-open">
             <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content bg-base-100 rounded-tl-ac-xl relative min-h-screen flex flex-col">
+            <div class={"drawer-content bg-base-100 rounded-tl-ac-xl relative flex flex-col " + (isPortal ? "h-dvh" : "min-h-screen")}>
                 <div class="w-full overflow-hidden pointer-events-none select-none hidden md:block">
                     <img src={url('header_banner_light.png')} data-light-src={url('header_banner_light.png')} data-dark-src={url('header_banner_dark.png')} alt="" class="w-full theme-banner" />
                 </div>
-                <Header title={SITE_TITLE} />
-                <div class="md:flex md:justify-center flex-1">
-                    <main class="p-6 pt-10 pb-20 lg:pb-6 lg:max-w-[900px] max-w-[100vw]">
+                <Header title={SITE_TITLE} site={site} />
+                <div class={isPortal ? "flex-1 flex flex-col" : "md:flex md:justify-center flex-1"}>
+                    <main class={isPortal ? "flex flex-col flex-1 p-0" : "p-6 pt-10 pb-20 lg:pb-6 lg:max-w-[900px] max-w-[100vw]"}>
                         <slot />
                     </main>
                 </div>
-                <Footer />
-                <MobileBottomNav sideBarActiveItemID={sideBarActiveItemID} />
+                <Footer site={site} />
+                {includeSidebar && <MobileBottomNav sideBarActiveItemID={sideBarActiveItemID} site={site} />}
 
                 <div class="w-full overflow-hidden pointer-events-none select-none flex justify-end mt-auto">
                     <img src={url('banner_light.png')} data-light-src={url('banner_light.png')} data-dark-src={url('banner_dark.png')} alt="" class="w-full theme-banner" />
@@ -60,7 +68,7 @@ const {
             </div>
             {
                 includeSidebar && (
-                    <SideBar sideBarActiveItemID={sideBarActiveItemID} />
+                    <SideBar sideBarActiveItemID={sideBarActiveItemID} site={site} />
                 )
             }
         </div>

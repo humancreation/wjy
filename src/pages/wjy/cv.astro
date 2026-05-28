@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TimeLineElement from "../../components/cv/TimeLine.astro";
+import { getCollection } from "astro:content";
+import { configs } from "src/config";
+
+const cfg = configs.wjy;
+const allItems = await getCollection("cv");
+const items = allItems.filter((i) => i.data.site === "wjy");
+items.sort((a, b) => a.data.order - b.data.order);
+
+const education = items.filter((i) => i.data.section === "education");
+const experience = items.filter((i) => i.data.section === "experience");
+const certifications = items.filter((i) => i.data.section === "certification");
+const skills = items.filter((i) => i.data.section === "skill");
+---
+
+<BaseLayout title={cfg.AUTHOR_INITIAL + " | 简历"} sideBarActiveItemID="cv" site="wjy">
+  {
+    education.length > 0 && (
+      <>
+        <div class="mb-5">
+          <div class="text-3xl w-full font-bold">教育经历</div>
+        </div>
+        <div class="time-line-container grid gap-4 mb-10">
+          {education.map((item) => (
+            <TimeLineElement
+              title={item.data.title}
+              subtitle={item.data.subtitle}
+            />
+          ))}
+        </div>
+      </>
+    )
+  }
+
+  {
+    experience.length > 0 && (
+      <>
+        <div class="mb-5">
+          <div class="text-3xl w-full font-bold">工作经历</div>
+        </div>
+        <div class="time-line-container mb-10">
+          {experience.map((item) => (
+            <TimeLineElement
+              title={item.data.title}
+              subtitle={item.data.subtitle}
+            >
+              {item.data.description}
+            </TimeLineElement>
+          ))}
+        </div>
+      </>
+    )
+  }
+
+  {
+    certifications.length > 0 && (
+      <>
+        <div class="mb-5">
+          <div class="text-3xl w-full font-bold">证书</div>
+        </div>
+        <ul class="list-disc mx-6 mb-10 grid gap-2">
+          {certifications.map((item) => (
+            <li>
+              <a href={item.data.url || "#"} target="_blank">
+                {item.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+
+  {
+    skills.length > 0 && (
+      <>
+        <div class="mb-5">
+          <div class="text-3xl w-full font-bold">技能</div>
+        </div>
+        <ul class="list-disc mx-6">
+          {skills.map((item) => (
+            <li>{item.data.title}</li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+</BaseLayout>

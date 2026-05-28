@@ -1,11 +1,13 @@
 ---
-import { AUTHOR_NAME } from "../config";
+import { configs } from "../config";
+const { site = "" } = Astro.props;
+const authorName = site ? configs[site]?.AUTHOR_NAME : "";
 const today = new Date();
 ---
 
 <footer class="footer footer-center block mb-5 pt-10 text-ac-text-light">
     <div class="pb-2">
-        &copy; {today.getFullYear()} {AUTHOR_NAME}
+        &copy; {today.getFullYear()} {authorName}
     </div>
     <!-- <div class="inline opacity-25">
         Created using
