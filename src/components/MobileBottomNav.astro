@@ -2,6 +2,7 @@
 import { url } from "../config";
 const { sideBarActiveItemID } = Astro.props;
 const tabs = [
+  { id: "home", label: "首页", icon: "nookmiles.png", href: url("") },
   { id: "projects", label: "项目", icon: "brush.png", href: url("projects") },
   { id: "cv", label: "简历", icon: "nookwallet.png", href: url("cv") },
   { id: "personal", label: "个人", icon: "nookcritters.png", href: url("personal") },
