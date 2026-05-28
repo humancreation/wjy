@@ -30,9 +30,8 @@ jobs:
         run: npm ci
 
       - name: Build site
-        run: pnpm build
+        run: npm run build
         env:
-          SITE: wjy
           BASE_URL: /wjy/
 
       - name: Upload artifact
