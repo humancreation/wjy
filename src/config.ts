@@ -40,7 +40,7 @@ export const configs: Record<string, SiteConfig> = {
 export const GENERATE_SLUG_FROM_TITLE = true;
 export const TRANSITION_API = true;
 
-const BASE_PATH = import.meta.env.BASE_URL;
+const BASE_PATH = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 export const url = (path: string) => {
   const clean = path.replace(/^\//, "");
   return clean ? BASE_PATH + clean : BASE_PATH;
