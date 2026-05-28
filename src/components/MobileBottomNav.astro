@@ -26,7 +26,18 @@ const activeClass = "bg-ac-primary/15 text-ac-primary-dark";
 </div>
 
 <script>
-  var activeItemElem = document.getElementById("bottom-" + document.querySelector('[id^="bottom-"]')?.id?.replace("bottom-", ""));
+  var drawer = document.getElementById("my-drawer");
+  var nav = document.currentScript?.previousElementSibling?.previousElementSibling;
+  if (drawer && nav) {
+    function toggleNav() {
+      nav.style.transition = "transform 0.2s ease, opacity 0.2s ease";
+      nav.style.transform = drawer.checked ? "translateY(100%)" : "translateY(0)";
+      nav.style.opacity = drawer.checked ? "0" : "1";
+      nav.style.pointerEvents = drawer.checked ? "none" : "auto";
+    }
+    drawer.addEventListener("change", toggleNav);
+    toggleNav();
+  }
 </script>
 
 <script define:vars={{ sideBarActiveItemID }}>
