@@ -2,7 +2,7 @@
 import SideBarFooter from "./SideBarFooter.astro";
 import { Image } from "astro:assets";
 import SideBarMenu from "./SideBarMenu.astro";
-import { url } from "../config";
+import { url, siteUrl } from "../config";
 const { sideBarActiveItemID, site = "" } = Astro.props;
 ---
 
@@ -12,7 +12,7 @@ const { sideBarActiveItemID, site = "" } = Astro.props;
         class="px-2 pt-2 h-auto min-h-full w-[19rem] bg-ac-cream-dark text-ac-text flex flex-col"
     >
         <div class="w-fit mx-auto mt-5 mb-6">
-            <a href={site ? "/" + site + "/" : "/"}>
+            <a href={site ? siteUrl(site) + "/" : "/"}>
                 <div
                     class="avatar transition ease-in-out hover:scale-[102%] block m-auto"
                 >

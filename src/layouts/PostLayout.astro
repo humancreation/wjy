@@ -19,7 +19,7 @@ const {
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(pubDate).format("ll");
 import { Image } from "astro:assets";
-import { configs, url } from "../config";
+import { configs, url, siteUrl } from "../config";
 
 const authorInitial = site ? (configs[site]?.AUTHOR_INITIAL || "") : "";
 ---
@@ -58,7 +58,7 @@ const authorInitial = site ? (configs[site]?.AUTHOR_INITIAL || "") : "";
                 site && tags &&
                     tags.map((tag) => (
                     <a
-                        href={`${configs[site].path}/blog/tag/${tag}`}
+                        href={`${siteUrl(site)}/blog/tag/${tag}`}
                         class="badge badge-outline ml-2 no-underline"
                     >
                         {tag}

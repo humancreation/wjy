@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { url } from "../config";
 ---
 <style is:global>
   @media (max-height: 600px) {
@@ -15,28 +16,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <p class="text-xl text-ac-text mt-4 px-6">欢迎来到我们的小屋，请选择要访问的个人空间</p>
     </div>
     <div class="flex flex-col sm:flex-row gap-6 mt-6 flex-wrap justify-center">
-      <a href="/wangjuying/" class="btn-ac text-xl px-10 py-6 gap-3 min-w-[200px] justify-center">
+      <a href={url('wangjuying/')} class="btn-ac text-xl px-10 py-6 gap-3 min-w-[200px] justify-center">
         <span class="text-3xl">🌸</span>
         <div class="flex flex-col items-start">
           <span class="text-lg font-bold">王菊英</span>
           <span class="text-sm opacity-80">WJY</span>
         </div>
       </a>
-      <a href="/lmx/" class="btn-ac text-xl px-10 py-6 gap-3 min-w-[200px] justify-center">
+      <a href={url('lmx/')} class="btn-ac text-xl px-10 py-6 gap-3 min-w-[200px] justify-center">
         <span class="text-3xl">🌙</span>
         <div class="flex flex-col items-start">
           <span class="text-lg font-bold">林鸣霄</span>
           <span class="text-sm opacity-80">LMX</span>
         </div>
       </a>
-      <a href="/yyd/" class="btn-ac text-xl px-10 py-6 gap-3 min-w-[200px] justify-center">
+      <a href={url('yyd/')} class="btn-ac text-xl px-10 py-6 gap-3 min-w-[200px] justify-center">
         <span class="text-3xl">✨</span>
         <div class="flex flex-col items-start">
           <span class="text-lg font-bold">叶玉灯</span>
           <span class="text-sm opacity-80">YYD</span>
         </div>
       </a>
-      <a href="/lsy/" class="btn-ac text-xl px-10 py-6 gap-3 min-w-[200px] justify-center">
+      <a href={url('lsy/')} class="btn-ac text-xl px-10 py-6 gap-3 min-w-[200px] justify-center">
         <span class="text-3xl">🕊️</span>
         <div class="flex flex-col items-start">
           <span class="text-lg font-bold">林诗雁</span>

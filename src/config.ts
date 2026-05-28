@@ -45,4 +45,9 @@ export const url = (path: string) => {
   const clean = path.replace(/^\//, "");
   return clean ? BASE_PATH + clean : BASE_PATH;
 };
+export const siteUrl = (site: string, path: string = "") => {
+  if (!site) return BASE_PATH;
+  const sitePrefix = configs[site].path.replace(/^\//, "");
+  return BASE_PATH + sitePrefix + path;
+};
 export { BASE_PATH };
