@@ -1,10 +1,10 @@
 ---
-title: "Demo notes"
-description: "I will add some of my course notes here later."
+title: "示例笔记"
+description: "我稍后会在这里添加一些课堂笔记。"
 pubDate: "Mar 14 2025"
 heroImage: "/post_img.png"
-badge: "demo"
-tags: ["notes"]
+badge: "示例"
+tags: ["笔记"]
 ---
 
 <!-- $$
@@ -19,8 +19,8 @@ $$
 \int_0^\infty = \frac{1}{x^2+1} \;dx=\frac{\pi}{2}
 $$
 
-Trying out code blocks and math rendering
+尝试代码块和数学公式渲染
 
-I guess it's working :)
+看起来效果不错 :)
 
-Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse doloremque aliquid rem nihil quo molestiae architecto. Odio maxime accusamus quam, quidem aliquid, tempore nisi, eaque officia reprehenderit officiis impedit est?
+这是一段示例笔记内容，用于展示笔记页面的功能和布局。

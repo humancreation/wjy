@@ -18,7 +18,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="en" data-base={BASE_PATH}>
+<html lang="zh" data-base={BASE_PATH}>
     <head>
         <BaseHead
             title={title}
@@ -73,7 +73,7 @@ const {
                 var icon = document.getElementById('theme-icon');
                 var label = document.getElementById('theme-label');
                 if (icon) icon.src = theme === 'night' ? __BASE__ + 'leaf_light.png' : __BASE__ + 'leaf_dark.png';
-                if (label) label.textContent = theme === 'night' ? 'Light Mode' : 'Dark Mode';
+                if (label) label.textContent = theme === 'night' ? '浅色模式' : '深色模式';
             }
             window.toggleTheme = function() {
                 var current = document.documentElement.getAttribute('data-theme') || 'nord';

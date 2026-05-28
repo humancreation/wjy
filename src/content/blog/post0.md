@@ -1,9 +1,9 @@
 ---
-title: "Welcome to my blog"
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+title: "欢迎来到我的博客"
+description: "这是你的第一篇博客文章，编辑或删除它，然后开始写作吧！"
 pubDate: "Mar 14 2025"
 heroImage: "/post_img.png"
-tags: ["welcome"]
+tags: ["欢迎"]
 ---
 
-Welcome to my blog! This is your first post. Edit or delete it, then start writing!
+欢迎来到我的博客！这是你的第一篇博客文章。编辑或删除它，然后开始写作吧！

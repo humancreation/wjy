@@ -16,16 +16,15 @@ const { page } = Astro.props;
 
 <BaseLayout title={AUTHOR_INITIAL + " | Blog"} sideBarActiveItemID="blog">
     <div class="mb-5">
-        <div class="text-3xl w-full font-bold">Blog</div>
+        <div class="text-3xl w-full font-bold">博客</div>
     </div>
 
     {
         page.data.length === 0 ? (
             <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
-                <p class="font-bold">Sorry!</p>
+                <p class="font-bold">抱歉！</p>
                 <p>
-                    There are no blog posts to show at the moment. Check back
-                    later!
+                    目前还没有博客文章。请稍后再来查看！
                 </p>
             </div>
         ) : (
@@ -65,7 +64,7 @@ const { page } = Astro.props;
                     >
                         <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
                     </svg>{" "}
-                    Recent posts
+                    较新文章
                 </a>
             ) : (
                 <div />
@@ -74,7 +73,7 @@ const { page } = Astro.props;
         {
             page.url.next ? (
                 <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
-                    Older Posts{" "}
+                    较旧文章{" "}
                     <svg
                         class="h-6 w-6 fill-current md:h-8 md:w-8"
                         xmlns="http://www.w3.org/2000/svg"
