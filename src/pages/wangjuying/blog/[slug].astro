@@ -23,6 +23,7 @@ const { Content } = await entry.render();
 ---
 
 <PostLayout
+    site={post.site}
     title={post.title}
     description={post.description}
     pubDate={post.pubDate}
@@ -33,3 +34,4 @@ const { Content } = await entry.render();
 >
     <Content />
 </PostLayout>
+

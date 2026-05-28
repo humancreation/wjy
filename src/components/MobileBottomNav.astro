@@ -1,6 +1,7 @@
 ---
+import { configs } from "../config";
 const { sideBarActiveItemID, site = "" } = Astro.props;
-const prefix = site ? "/" + site : "";
+const prefix = site ? configs[site].path : "";
 const tabs = [
   { id: "home", label: "首页", icon: "nookmiles.png", href: prefix + "/" },
   { id: "projects", label: "项目", icon: "brush.png", href: prefix + "/projects" },

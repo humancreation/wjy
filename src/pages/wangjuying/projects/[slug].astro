@@ -22,6 +22,7 @@ const { Content } = await entry.render();
 ---
 
 <ProjectLayout
+    site={project.site}
     title={project.title}
     description={project.description}
     pubDate={project.pubDate}
@@ -34,3 +35,4 @@ const { Content } = await entry.render();
 >
     <Content />
 </ProjectLayout>
+

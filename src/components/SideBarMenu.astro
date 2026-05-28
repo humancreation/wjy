@@ -1,6 +1,7 @@
 ---
+import { configs } from "../config";
 const { sideBarActiveItemID, site = "" } = Astro.props;
-const prefix = site ? "/" + site : "";
+const prefix = site ? configs[site].path : "";
 const activeClass = "bg-ac-primary/15 text-ac-primary-dark rounded-ac-md";
 const homeHref = site ? prefix + "/" : "/";
 ---

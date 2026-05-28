@@ -53,10 +53,10 @@ const authorInitial = site ? (configs[site]?.AUTHOR_INITIAL || "") : "";
 
             <div class="mt-2">
                 {
-                    tags &&
+                    site && tags &&
                         tags.map((tag) => (
                             <a
-                                href={`/${site}/projects/tag/${tag}`}
+                                href={`${configs[site].path}/projects/tag/${tag}`}
                                 class="badge badge-outline ml-2 no-underline"
                             >
                                 {tag}

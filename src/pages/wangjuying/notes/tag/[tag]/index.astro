@@ -24,7 +24,7 @@ const filtered = notes.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
 <BaseLayout title={`${cfg.AUTHOR_INITIAL} | #${tag}`} sideBarActiveItemID="notes" site="wjy">
     <div class="mb-5">
         <div class="text-3xl w-full font-bold">标签: #{tag}</div>
-        <a href="/wjy/notes/" class="text-sm text-ac-primary hover:underline">&larr; 返回笔记</a>
+        <a href="/wangjuying/notes/" class="text-sm text-ac-primary hover:underline">&larr; 返回笔记</a>
     </div>
 
     {
@@ -52,3 +52,4 @@ const filtered = notes.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
         )
     }
 </BaseLayout>
+
