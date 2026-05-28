@@ -1,7 +1,7 @@
 ---
 site: lmx
 greeting: "嗨"
-intro: "欢迎来到李梦雪的个人小站。"
+intro: "欢迎来到我的个人小站。"
 intro2: "希望你喜欢这里的一切！"
 fontSample: false
 en: "The quick brown fox jumps over the lazy dog."
