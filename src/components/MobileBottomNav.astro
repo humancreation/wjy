@@ -10,7 +10,7 @@ const tabs = [
 const activeClass = "bg-ac-primary/15 text-ac-primary-dark";
 ---
 
-<div class="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
+<div id="mobile-bottom-nav" class="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
   <div class="flex justify-around items-center h-16 bg-ac-cream-dark/95 backdrop-blur border-t border-ac-border shadow-[0_-2px_8px_rgba(135,115,88,0.12)] px-2">
     {tabs.map((tab) => (
       <a
@@ -26,25 +26,18 @@ const activeClass = "bg-ac-primary/15 text-ac-primary-dark";
 </div>
 
 <script>
-  var drawer = document.getElementById("my-drawer");
-  var nav = document.currentScript?.previousElementSibling?.previousElementSibling;
-  if (drawer && nav) {
-    function toggleNav() {
-      nav.style.transition = "transform 0.2s ease, opacity 0.2s ease";
-      nav.style.transform = drawer.checked ? "translateY(100%)" : "translateY(0)";
-      nav.style.opacity = drawer.checked ? "0" : "1";
-      nav.style.pointerEvents = drawer.checked ? "none" : "auto";
+  function initBottomNav() {
+    var drawer = document.getElementById("my-drawer");
+    var nav = document.getElementById("mobile-bottom-nav");
+    if (!drawer || !nav) return;
+    function toggle() {
+      nav.style.setProperty("visibility", drawer.checked ? "hidden" : "visible");
+      nav.style.setProperty("opacity", drawer.checked ? "0" : "1");
+      nav.style.setProperty("pointer-events", drawer.checked ? "none" : "auto");
     }
-    drawer.addEventListener("change", toggleNav);
-    toggleNav();
+    drawer.addEventListener("change", toggle);
+    toggle();
   }
-</script>
-
-<script define:vars={{ sideBarActiveItemID }}>
-  if (sideBarActiveItemID) {
-    var el = document.getElementById("bottom-" + sideBarActiveItemID);
-    if (el) {
-      ["bg-ac-primary/15", "text-ac-primary-dark"].forEach(function(c) { el.classList.add(c); });
-    }
-  }
+  document.addEventListener("astro:page-load", initBottomNav);
+  initBottomNav();
 </script>
