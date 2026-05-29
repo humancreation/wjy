@@ -49,22 +49,26 @@ const isPortal = !site;
     <body>
         <div class="bg-ac-cream drawer lg:drawer-open">
             <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-            <div class={"drawer-content bg-base-100 rounded-tl-ac-xl relative flex flex-col " + (isPortal ? "h-dvh" : "min-h-screen")}>
+            <div class={"drawer-content bg-base-100 relative flex flex-col " + (isPortal ? "h-dvh" : "min-h-screen rounded-tl-ac-xl")}>
+                {!isPortal && (
                 <div class="w-full overflow-hidden pointer-events-none select-none hidden md:block">
                     <img src={url('header_banner_light.png')} data-light-src={url('header_banner_light.png')} data-dark-src={url('header_banner_dark.png')} alt="" class="w-full theme-banner" />
                 </div>
+                )}
                 <Header title={SITE_TITLE} site={site} />
                 <div class={isPortal ? "flex-1 flex flex-col" : "md:flex md:justify-center flex-1"}>
                     <main class={isPortal ? "flex flex-col flex-1 p-0" : "p-6 pt-10 pb-20 lg:pb-6 lg:max-w-[900px] max-w-[100vw]"}>
                         <slot />
                     </main>
                 </div>
-                <Footer site={site} />
+                {!isPortal && <Footer site={site} />}
                 {includeSidebar && <MobileBottomNav sideBarActiveItemID={sideBarActiveItemID} site={site} />}
 
+                {!isPortal && (
                 <div class="w-full overflow-hidden pointer-events-none select-none flex justify-end mt-auto">
                     <img src={url('banner_light.png')} data-light-src={url('banner_light.png')} data-dark-src={url('banner_dark.png')} alt="" class="w-full theme-banner" />
                 </div>
+                )}
             </div>
             {
                 includeSidebar && (

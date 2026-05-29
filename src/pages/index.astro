@@ -8,11 +8,45 @@ import { url } from "../config";
       overflow-y: auto;
     }
   }
+  .h-dvh {
+    background-color: #7dc395;
+    background-image: url(/bg_home.webp);
+    background-position: 100% 0%;
+    background-repeat: repeat;
+    background-size: auto;
+    animation: bgScroll 80s linear infinite;
+  }
+  @keyframes bgScroll {
+    0% { background-position: 100% 0%; }
+    to { background-position: 0% 100%; }
+  }
+  .h-dvh > .sticky {
+    display: none;
+  }
+  .h-dvh .flex-1.flex.flex-col main {
+    justify-content: center;
+  }
+  .h-dvh .flex-1.flex.flex-col main > div {
+    margin-top: -24px;
+  }
+  .portal-img {
+    margin-left: calc(50% - 176px) !important;
+  }
+  .portal-title {
+    font-family: Nunito, "Zen Maru Gothic", -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff9e6;
+    text-shadow: 0px 4px 1px rgba(0,0,0,.4);
+    margin: 0 0 12px;
+    font-size: 60px;
+  }
 </style>
 <BaseLayout title="温馨小屋" includeSidebar={false}>
-  <div class="flex flex-col items-center justify-center gap-8 py-12 my-auto" style="min-height: 466px;">
+  <div class="flex flex-col items-center justify-center gap-8 py-12" style="min-height: 466px;">
     <div class="text-center">
-      <h1 class="text-5xl font-bold text-ac-primary mb-2">🏡 温馨小屋</h1>
+      <img src="/favicon.svg" class="fill-current rounded-ac-md mx-auto mb-4 portal-img" alt="icon" width="300" height="300" loading="lazy" decoding="async">
+      <h1 class="portal-title">温馨小屋</h1>
       <p class="text-xl text-ac-text mt-4 px-6">欢迎来到我们的小屋，请选择要访问的个人空间</p>
     </div>
     <div class="flex flex-col sm:flex-row gap-6 mt-6 flex-wrap justify-center">
